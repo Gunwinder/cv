@@ -1,0 +1,166 @@
+<html>
+<head>
+<title>USMA - Ticket Webform </title>
+
+
+
+<!-- begin JS Code -->
+
+<script type="text/javascript">
+						
+                                                                        
+                                                                                                               
+				function validateForm() {
+				
+				var ContactName = document.getElementById("name").value;
+                var ContactEmail = document.getElementById('txtEmail').value;
+				var EmailRegEx = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/; 			   
+                var ContactPhone = document.getElementById("phone2").value;
+                var TicketSub = document.getElementById("subject").value;
+                var TicketDesc = document.getElementById("description").value;
+				var Category = document.getElementById("00Nt0000000qei7").value;
+				var validdomainRegEx=  /^[a-zA-Z0-9_.+-]+@(?:(?:[a-zA-Z0-9-]+\.)?[a-zA-Z]+\.)?(westpoint|domain2)\.edu$/;			
+
+                               
+                                // toggled value and inner HTML
+                               								
+                                 if (ContactName == "" ){
+                                alert("Name must be filled out");
+                                return false;                                      
+                                }
+								else if((ContactEmail == null || ContactEmail == "" )){
+                                alert("Email must be filled out");
+                                return false;
+                                }
+                                else if(!ContactEmail.match(EmailRegEx))
+                                {
+                                alert("The email is not in valid email format !");
+                                return false;
+                                }  
+								else if(!ContactEmail.match(validdomainRegEx))
+                                {
+                                alert("The email entered does not contain westpoint domain !");
+                                return false;
+                                }  	
+                                else if((ContactPhone == null || ContactPhone == "" ))
+                                {
+                                alert("Phone must be filled out");
+                                return false;
+                                }
+                                else if(ContactPhone.length != 10)
+                                {
+                                alert("The Contact No. must be at least 10 digit long!");
+                                return false;
+                                }
+								else if(Category =="--SELECT--" || Category ==null){
+								alert("Please choose a valid Problem Category");
+								return false;
+								}
+                                else if((TicketSub == null || TicketSub == "" ))
+                                {
+                                alert("Subject must be filled out");
+                                return false;
+                                } 
+                                elseif((TicketDesc == null || TicketDesc == "" ))
+                                {
+                                alert("Description must be filled out");
+                                return false;
+                                }
+                               
+                return true;
+}
+
+</script>
+</head>        
+
+<!-- end of JS Code -->
+<body>
+<form id="ticketForm" name="USMA" onsubmit="return validateForm()" action="#" method="post">
+
+    <input type=hidden name="orgid" value="00Dt00000008aX0">
+    <input type=hidden name="retURL" value="https://westpoint.edu/">
+    <input type=hidden name="recordType" value="012t0000000Coa3" />
+	<input type=hidden name="Account" id="001t000000IOWsG" value="001t000000IOWsG" /> 
+    <input type=hidden id="00Nt0000000qifb" name="00Nt0000000qifb" value="Web" />
+	 <input type=hidden name="origin" id="" value="Web (Kiosk)" />
+	<input type="hidden"  id="external" name="external" value="1" />
+
+    <table width="400" border="0">
+        <tr>
+            <td> <label for="name">Contact Name</label></td>
+            <td> <input id="name" maxlength="80" name="name" size="20" type="text" /> </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label for="email2">Email</label>
+            </td>
+            <td>
+                <input id="txtEmail" style='text-transform:lowercase'; maxlength="80" name="email" size="20" type="text" />
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label for="phone2">Phone</label>
+            </td>
+            <td>
+                <input id="phone2" maxlength="50" name="phone2" size="20" type="text" />
+            </td>
+        </tr>
+
+        <tr>
+            <td>Problem Category:</td>
+            <td>
+                <select id="00Nt0000000qei7" name="00Nt0000000qei7" title="Ticket Category" onChange="populate_catnType(this.id,'00Nt0000000qeiC');">
+                    <option value="--SELECT--">--SELECT--</option>
+                    <option value="AMS">AMS</option>
+                    <option value="Classroom">Classroom</option>
+                    <option value="Computer - Lab">Computer - Lab</option>
+                    <option value="Computer - Office">Computer - Office</option>
+                    <option value="Computer - User Owned">Computer - User Owned</option>
+                    <option value="Email">Email</option>
+                    <option value="Facilities">Facilities</option>
+                    <option value="LMS">LMS</option>
+                    <option value="Mobile Device - Org Owned">Mobile Device - Org Owned</option>
+                    <option value="Mobile Device - User Owned">Mobile Device - User Owned</option>
+                    <option value="Network">Network</option>
+                    <option value="Portal">Portal</option>
+                    <option value="Printing / Imaging">Printing / Imaging</option>
+                    <option value="Software (Computer)">Software (Computer)</option>
+                    <option value="Telephone">Telephone</option>
+                    <option value="Other">Other</option>
+                    <option value="Web hosting">Web hosting</option>
+                </select>
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>
+                <label>Subject</label>
+            </td>
+            <td>
+                <input id="subject" maxlength="80" name="subject" size="20" type="text" />
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label>Description</label>
+            </td>
+            <td>
+                <textarea id="description" name="description"></textarea> 
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <input type="submit" name="submit">               
+            </td>
+        </tr>
+
+    </table>
+</form>
+</body>            
+</html>
